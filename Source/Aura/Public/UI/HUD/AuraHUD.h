@@ -30,13 +30,13 @@ public:
 protected:
 	
 private:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "UI", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<UAuraUserWidget> OverlayWidgetClass;
 
 	UPROPERTY()
 	TObjectPtr<UOverlayWidgetController> OverlayWidgetController;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "UI", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<UOverlayWidgetController> OverlayWidgetControllerClass;
 
 	

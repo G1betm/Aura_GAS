@@ -17,6 +17,36 @@
 /**
  * 
  */
+USTRUCT()
+struct FEffectProperties
+{
+	GENERATED_BODY()
+	FEffectProperties() {};
+
+	FGameplayEffectContextHandle EffectContextHandle;
+	
+	UPROPERTY()
+	TObjectPtr<UAbilitySystemComponent> SourceASC = nullptr;
+	UPROPERTY()
+	TObjectPtr<UAbilitySystemComponent> TargetASC = nullptr;
+	
+	UPROPERTY()
+	AActor* SourceAvatarActor = nullptr;
+	UPROPERTY()
+	AActor* TargetAvatarActor = nullptr;
+	
+	UPROPERTY()
+	AController* SourceController = nullptr;
+	UPROPERTY()
+	AController* TargetController = nullptr;
+	
+	UPROPERTY()
+	ACharacter* SourceCharacter = nullptr;
+	UPROPERTY()
+	ACharacter* TargetCharacter = nullptr;
+	
+};
+
 UCLASS()
 class AURA_API UAuraAttributeSet : public UAttributeSet
 {
@@ -25,6 +55,9 @@ class AURA_API UAuraAttributeSet : public UAttributeSet
 public:
 	UAuraAttributeSet();
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
+
+	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
+	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
 
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Health, Category="VitalAttributes")
 	FGameplayAttributeData Health;
@@ -53,5 +86,8 @@ public:
 
 	UFUNCTION()
 	void OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana) const;
+
+private:
+	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const;
 	
 };
