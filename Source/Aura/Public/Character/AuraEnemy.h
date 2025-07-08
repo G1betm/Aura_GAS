@@ -9,6 +9,8 @@
 #include "AbilitySystem/Data/CharacterClassInfo.h"
 #include "AuraEnemy.generated.h"
 
+class AAuraAIController;
+class UBehaviorTree;
 class UWidgetComponent;
 /**
  * 
@@ -20,6 +22,9 @@ class AURA_API AAuraEnemy : public AAuraCharacterBase, public IEnemyInterface
 
 public:
 	AAuraEnemy();
+
+	virtual void PossessedBy(AController* NewController) override;
+	
 	virtual void HighlightActor() override;
 	virtual void UnhighlighActor() override;
 
@@ -56,10 +61,15 @@ protected:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Character Class Defaults")
 	ECharacterClass CharacterClass = ECharacterClass::Warrior;
-	
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<UWidgetComponent> HealthBar;
+
+	UPROPERTY(EditAnywhere, Category="AI")
+	TObjectPtr<UBehaviorTree> BehaviorTree;
+
+	UPROPERTY()
+	TObjectPtr<AAuraAIController> AuraAIController;
 
 	
 };
