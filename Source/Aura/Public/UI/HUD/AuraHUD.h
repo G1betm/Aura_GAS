@@ -41,8 +41,8 @@ private:
 	UPROPERTY()
 	TObjectPtr<UOverlayWidgetController> OverlayWidgetController;
 
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<UOverlayWidgetController> OverlayWidgetControllerClass;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="AuraHUD", meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<UOverlayWidgetController> OverlayWidgetControllerClassBP;
 	
 	UPROPERTY()
 	TObjectPtr<UAttributeMenuWidgetController> AttributeMenuWidgetController;

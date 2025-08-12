@@ -11,7 +11,7 @@ UOverlayWidgetController* AAuraHUD::GetOverlayWidgetController(const FWidgetCont
 {
 	if (OverlayWidgetController == nullptr)
 	{
-		OverlayWidgetController = NewObject<UOverlayWidgetController>(this, OverlayWidgetControllerClass);
+		OverlayWidgetController = NewObject<UOverlayWidgetController>(this, OverlayWidgetControllerClassBP);
 		OverlayWidgetController->SetWidgetControllerParams(WCParams);
 		OverlayWidgetController->BindCallbacksToDependencies();
 	}
@@ -46,7 +46,7 @@ USpellMenuWidgetController* AAuraHUD::GetSpellMenuWidgetController(const FWidget
 void AAuraHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)
 {
 	checkf(OverlayWidgetClass, TEXT("Overlay widget class uninitialized, please fill out BP_AuraHUD"));
-	checkf(OverlayWidgetControllerClass, TEXT("Overlay widget controller class uninitialized, please fill out BP_AuraHUD"));
+	checkf(OverlayWidgetControllerClassBP, TEXT("Overlay widget controller class uninitialized, please fill out BP_AuraHUD"));
 
 	UUserWidget* Widget =  CreateWidget<UUserWidget>(GetWorld(), OverlayWidgetClass);
 	OverlayWidget = Cast<UAuraUserWidget>(Widget);
