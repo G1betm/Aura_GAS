@@ -5,6 +5,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "NavigationPath.h"
 #include "NavigationSystem.h"
+#include "NiagaraFunctionLibrary.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "Components/SplineComponent.h"
 #include "Engine/LocalPlayer.h"
@@ -128,7 +129,7 @@ void AAuraPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 		if (FollowTime <= ShortPresThreshold && ControlledPawn)
 		{
 			UNavigationPath* NavPath = UNavigationSystemV1::FindPathToLocationSynchronously(this, ControlledPawn->GetActorLocation(), CachedDestination);
-
+			
 			if (NavPath)
 			{
 				Spline->ClearSplinePoints();
@@ -150,6 +151,7 @@ void AAuraPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 				
 				bAutoRunning = true;
 			}
+			UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, ClickNiagaraSystem, CachedDestination);
 		}
 		
 		FollowTime = 0.f;
