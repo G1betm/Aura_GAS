@@ -235,7 +235,7 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		);
 	
 	/*
-	 * Abilities
+	 * Offensive spells
 	*/
 	
 	GameplayTags.Abilities_None = UGameplayTagsManager::Get().AddNativeGameplayTag(
@@ -255,9 +255,13 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		FName("Abilities.Fire.Firebolt"),
 		FString("Firebolt ability tag")
 		);
-	GameplayTags.Abilities_Fire_Firebolt = UGameplayTagsManager::Get().AddNativeGameplayTag(
+	GameplayTags.Abilities_Lightning_Electrocute = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("Abilities.Lightning.Electrocute"),
 		FString("Electrocute ability tag")
+		);
+	GameplayTags.Abilities_Arcane_ArcaneShards = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Abilities.Arcane.ArcaneShards"),
+		FString("ArcaneShards ability tag")
 		);
 	
 	/*
