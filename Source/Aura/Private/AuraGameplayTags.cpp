@@ -393,4 +393,14 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		FName("Player.Block.InputReleased"),
 		FString("Block input released callback for input")
 		);
+
+
+	/*
+	 * Gameplay Cues
+	*/
+	
+	GameplayTags.Abilities_Type_None = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("GameplayCue.FireBlast"),
+		FString("FireBlast GameplayCue Tag")
+		);
 }
