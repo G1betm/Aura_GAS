@@ -29,7 +29,7 @@ protected:
 	int32 MaxNumProjectiles = 5;
 
 	UPROPERTY(EditDefaultsOnly, Category="FilreBolt")
-	float HomingAccelerationMin = 2000.f;
+	float HomingAccelerationMin = 4000.f;
 
 	UPROPERTY(EditDefaultsOnly, Category="FilreBolt")
 	float HomingAccelerationMax = 3500.f;
