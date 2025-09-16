@@ -55,6 +55,7 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category="Combat")
 	TObjectPtr<AActor> CombatTarget;
 
+	void SetLevel(const int32 InLevel) {Level = InLevel;}
 	
 protected:
 	virtual void BeginPlay() override;
